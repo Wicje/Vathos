@@ -269,23 +269,38 @@
   }
   .work-thumb iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
 
+  /* Poster + honest CTA. Google Drive's /preview endpoint supports neither
+     autoplay nor looping, so we never claim otherwise in the UI. */
   .work-play {
     position: absolute; inset: 0; width: 100%; height: 100%;
     border: 0; background: transparent; cursor: pointer;
-    display: grid; place-items: center; gap: 0;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 14px; padding: 18px;
   }
-  .work-play span {
-    width: 56px; height: 56px; border-radius: 50%;
+  .work-play .glyph {
+    width: 58px; height: 58px; border-radius: 50%;
     background: rgba(255,255,255,0.92); display: grid; place-items: center;
     transition: transform .2s ease, background .2s ease;
   }
-  .work-play span::after {
+  .work-play .glyph::after {
     content: ''; border-style: solid; border-width: 8px 0 8px 13px;
     border-color: transparent transparent transparent var(--ink);
     margin-left: 3px;
   }
-  .work-play:hover span { transform: scale(1.08); background: #fff; }
-  .work-play:focus-visible span { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .work-play em {
+    font-style: normal; font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    background: var(--ink); color: #fff; padding: 6px 11px;
+  }
+  .work-play:hover .glyph { transform: scale(1.08); background: #fff; }
+  .work-play:hover em { background: var(--accent); }
+
+  .work-note {
+    font-size: 0.72rem; color: var(--dim); line-height: 1.6;
+    margin: -18px 0 30px; max-width: 64ch;
+  }
+  .work-note a { border-bottom: 1px solid var(--line); }
+  .work-note a:hover { color: var(--ink); border-color: var(--ink); }
 
   .work-card h4 { margin: 0 0 3px; font-size: 0.85rem; font-weight: 700; transition: color .2s ease; }
   .work-card:hover h4 { color: var(--accent); }
@@ -551,38 +566,52 @@
         <a href="#contact">Request full reel</a>
       </div>
 
+      <p class="work-note">Clips stream from Google Drive, so they load paused with Drive's own controls — hit play, or open any clip straight on Drive if the in-page player won't load.</p>
+
       <div class="work-grid">
 
         <article class="work-card reveal">
           <div class="work-thumb" style="--tint1:#0a0a0a; --tint2:#4a4a46;">
-            <button class="work-play" type="button" data-drive="1iuOP5lKz1mEAUeKlL0w3sgjU1Aid7MGX" aria-label="Play: Apostle edu teaching reel"></button>
+            <button class="work-play" type="button" data-drive="1iuOP5lKz1mEAUeKlL0w3sgjU1Aid7MGX" data-title="Apostle edu teaching reel">
+              <span class="glyph" aria-hidden="true"></span>
+              <em>Play in page</em>
+            </button>
           </div>
           <h4>Apostle edu teaching reel</h4>
-          <p><a href="https://drive.google.com/file/d/1iuOP5lKz1mEAUeKlL0w3sgjU1Aid7MGX/view" target="_blank" rel="noopener">Open in Drive ↗</a></p>
+          <p><a href="https://drive.google.com/file/d/1iuOP5lKz1mEAUeKlL0w3sgjU1Aid7MGX/view" target="_blank" rel="noopener">Watch on Drive ↗</a></p>
         </article>
 
         <article class="work-card reveal">
           <div class="work-thumb" style="--tint1:#55534d; --tint2:#0a0a0a;">
-            <button class="work-play" type="button" data-drive="1ccw_Ra4BpPt5QYJmr7vHZ03SKFSkrpHn" aria-label="Play: Mandate Reel Estate Content"></button>
+            <button class="work-play" type="button" data-drive="1ccw_Ra4BpPt5QYJmr7vHZ03SKFSkrpHn" data-title="Mandate Reel Estate Content">
+              <span class="glyph" aria-hidden="true"></span>
+              <em>Play in page</em>
+            </button>
           </div>
           <h4>Mandate Reel Estate Content</h4>
-          <p><a href="https://drive.google.com/file/d/1ccw_Ra4BpPt5QYJmr7vHZ03SKFSkrpHn/view" target="_blank" rel="noopener">Open in Drive ↗</a></p>
+          <p><a href="https://drive.google.com/file/d/1ccw_Ra4BpPt5QYJmr7vHZ03SKFSkrpHn/view" target="_blank" rel="noopener">Watch on Drive ↗</a></p>
         </article>
 
         <article class="work-card reveal">
           <div class="work-thumb" style="--tint1:#2a2a28; --tint2:#6b6a64;">
-            <button class="work-play" type="button" data-drive="173UcDf1zxxfQXFNj5xxVvQl-BoeUfoZA" aria-label="Play: Ajman Conference, Dubai"></button>
+            <button class="work-play" type="button" data-drive="173UcDf1zxxfQXFNj5xxVvQl-BoeUfoZA" data-title="Ajman Conference, Dubai">
+              <span class="glyph" aria-hidden="true"></span>
+              <em>Play in page</em>
+            </button>
           </div>
           <h4>Ajman Conference, Dubai</h4>
-          <p><a href="https://drive.google.com/file/d/173UcDf1zxxfQXFNj5xxVvQl-BoeUfoZA/view" target="_blank" rel="noopener">Open in Drive ↗</a></p>
+          <p><a href="https://drive.google.com/file/d/173UcDf1zxxfQXFNj5xxVvQl-BoeUfoZA/view" target="_blank" rel="noopener">Watch on Drive ↗</a></p>
         </article>
 
         <article class="work-card reveal">
           <div class="work-thumb" style="--tint1:#6b6a64; --tint2:#2a2a28;">
-            <button class="work-play" type="button" data-drive="1IhYrD9nvI_Qjrf0KEzco7CdHpxegaydr" aria-label="Play: Revival Hub Highlight ISC"></button>
+            <button class="work-play" type="button" data-drive="1IhYrD9nvI_Qjrf0KEzco7CdHpxegaydr" data-title="Revival Hub Highlight ISC">
+              <span class="glyph" aria-hidden="true"></span>
+              <em>Play in page</em>
+            </button>
           </div>
           <h4>Revival Hub Highlight ISC</h4>
-          <p><a href="https://drive.google.com/file/d/1IhYrD9nvI_Qjrf0KEzco7CdHpxegaydr/view" target="_blank" rel="noopener">Open in Drive ↗</a></p>
+          <p><a href="https://drive.google.com/file/d/1IhYrD9nvI_Qjrf0KEzco7CdHpxegaydr/view" target="_blank" rel="noopener">Watch on Drive ↗</a></p>
         </article>
 
       </div>
@@ -668,17 +697,19 @@
   });
 
   // --- click-to-load Drive embeds ---
-  // Loading four Drive iframes at once is slow and Google often refuses to
-  // frame them, so each player is only created on click.
+  // Loading four Drive iframes at once is slow, so each player is only created
+  // on click. NOTE: Drive's /preview endpoint supports neither autoplay nor
+  // looping and ignores any autoplay parameter, so we don't send one — the
+  // clip loads paused and the viewer presses Drive's own play control.
   document.querySelectorAll('.work-play').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var id = btn.getAttribute('data-drive');
       var frame = document.createElement('iframe');
-      frame.src = 'https://drive.google.com/file/d/' + id + '/preview?autoplay=1';
-      frame.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+      frame.src = 'https://drive.google.com/file/d/' + id + '/preview';
+      frame.setAttribute('allow', 'encrypted-media; picture-in-picture');
       frame.setAttribute('allowfullscreen', '');
       frame.setAttribute('loading', 'lazy');
-      frame.title = btn.getAttribute('aria-label').replace('Play: ', '');
+      frame.title = btn.getAttribute('data-title');
       btn.replaceWith(frame);
     });
   });
